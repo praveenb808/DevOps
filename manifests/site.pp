@@ -3,5 +3,6 @@ node 'client.localdomain' {
 #include firstpackage
 #include useradd
 #include serviceresource
-include httpd
+#include httpd
+include filesource
 }
