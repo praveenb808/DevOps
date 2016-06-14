@@ -5,6 +5,6 @@ node 'client.localdomain' {
 #include serviceresource
 #include httpd
 #include filesource
-#include examplecase
-include exampleselect
+include examplecase
+#include exampleselect
 }
