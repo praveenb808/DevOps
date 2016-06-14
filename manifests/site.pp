@@ -4,5 +4,6 @@ node 'client.localdomain' {
 #include useradd
 #include serviceresource
 #include httpd
-include filesource
+#include filesource
+include examplecase
 }
