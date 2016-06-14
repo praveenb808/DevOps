@@ -1,0 +1,3 @@
+this is the file copied from source in the moudles directory
+using source attribute 
+puppet:///modules/filesource/testfile
