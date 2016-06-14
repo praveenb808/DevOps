@@ -1,3 +1,5 @@
 node 'client.localdomain' {
-include secondmodule
+#include firstfile
+#include firstpackage
+include useradd
 }
