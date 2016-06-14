@@ -1,0 +1,14 @@
+{
+  "name": "udevops-serviceresource",
+  "version": "0.1.0",
+  "author": "udevops",
+  "summary": "starts apache service",
+  "license": "Apache 2.0",
+  "source": "https://github.com/udevops42/devops0616",
+  "issues_url": "https://github.com/udevops42/devops0616/issues",
+  "project_page": "https://github.com/udevops42/devops0616",
+  "dependencies": [
+    {"version_requirement":">= 1.0.0","name":"puppetlabs-stdlib"}
+  ]
+}
+
