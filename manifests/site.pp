@@ -1,10 +1,12 @@
 node 'client.localdomain' {
-#include firstfile
-#include firstpackage
-#include useradd
-#include serviceresource
-#include httpd
-#include filesource
-include examplecase
-#include exampleselect
+include templatedemo
+}
+node 'db01.comapnyname.com' {
+include roles::database
+}
+node 'cache01.comapnayname.com' {
+include roles::cache
+}
+node 'haproxy01.comapnyname.com' {
+include roles::loadbalancer
 }

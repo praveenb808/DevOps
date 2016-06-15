@@ -1,6 +1,6 @@
 class firstfile {
 file {"/tmp/firstfile.txt":
-         ensure => absent,
+         ensure => present,
          mode => 0644,
          owner => client,
          group => client,
