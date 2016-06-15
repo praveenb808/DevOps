@@ -1,5 +1,8 @@
 node 'client.localdomain' {
-include templatedemo
+#include templatedemo
+#include useraddhiera 
+include secondhieramodule
+#include thirdmodule
 }
 node 'db01.comapnyname.com' {
 include roles::database
