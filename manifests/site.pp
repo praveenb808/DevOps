@@ -1,15 +1,17 @@
 node 'client.localdomain' {
-#include templatedemo
-#include useraddhiera 
-include secondhieramodule
-#include thirdmodule
+#      include roles::webserver
+secondcustomresource::security { "security":
+somepackage => "mod_ssl",
+file => "/etc/security/securityaudit.txt"
 }
-node 'db01.comapnyname.com' {
-include roles::database
+secondcustomresource::security { "telnet":
+somepackage => "telnet",
+file => "/tmp/telnet.txt"
 }
-node 'cache01.comapnayname.com' {
-include roles::cache
+secondcustomresource::security { "wget":
+somepackage => "wget",
+file => "/tmp/wget.txt"
 }
-node 'haproxy01.comapnyname.com' {
-include roles::loadbalancer
+
+
 }
