@@ -3,4 +3,5 @@ node 'client.localdomain' {
 }
 node 'webserver.tx.rr.com' {
       include roles::qawebserver
+      include tomcat
 }
