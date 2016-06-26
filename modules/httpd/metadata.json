@@ -1,12 +1,12 @@
 {
-  "name": "udevops-httpd",
+  "name": "udevops42-httpd",
   "version": "0.1.0",
-  "author": "udevops",
-  "summary": null,
+  "author": "udevops42",
+  "summary": "Install and configure apache on redhat and debian based systems, and install apache related modules using custom resource type",
   "license": "Apache 2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/udevops42",
+  "project_page": "https://github.com/udevops42",
+  "issues_url": "https://github.com/udevops42/issues",
   "dependencies": [
     {"version_requirement":">= 1.0.0","name":"puppetlabs-stdlib"}
   ]

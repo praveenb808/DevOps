@@ -35,21 +35,60 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class httpd {
-package {"httpd":
-          ensure => present,
-          before => File["/etc/httpd/conf/httpd.conf"]
-         }
+class httpd 
+(
+$package = $httpd::params::package,
+$package_ensure = $httpd::params::package_ensure,
+$config_file = $httpd::params::config_file,
+$file_ensure = $httpd::params::file_ensure,
+$file_source = $httpd::params::file_source,
+$service = $httpd::params::service,
+$service_ensure = $httpd::params::service_ensure,
+$service_enable = $httpd::params::service_enable,
+)
+inherits httpd::params
+{
+case $::osfamily {
+         'RedHat': {
 
-file  {"/etc/httpd/conf/httpd.conf":
-          ensure => present,
-          source => "puppet:///modules/httpd/httpd.conf",
-          notify => Service["httpd"]
-       }
+		package {$package:
+                       ensure => $package_ensure
+                        }
+		file {$config_file:
+                      ensure => $file_ensure,
+                      source => $file_source,
+                      require => Package[$package]
+                     }
+		service {$service:
+                      ensure => $service_ensure,
+                      enable => $service_enable,
+                      subscribe => File[$config_file]
+                     } 
+                  }
+         'Debian': {
+ 
+                package {"apache2":
+                      ensure => installed
+                        }
+                file  {"/etc/apache2/apache2.conf":
+                      ensure => file,
+                      source => "puppet:///modules/httpd/apache2.conf",
+                      }
+                service {"apache2":
+                      ensure => running,
+                        }
+                   }
 
-service {"httpd":
-          ensure => running,
-          enable  => true,
-          require => Package["httpd"]
-         }
-}
+          default: {
+
+                package {"telnet":
+                      ensure => installed
+                        }
+                file {"/tmp/apache.txt":
+                     ensure => file,
+                     content => "Hey this is from httpd module default value"
+                     }
+                   
+                   }
+                  }
+                 } 
