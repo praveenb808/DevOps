@@ -1,0 +1,32 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "A simple stack that launches an instance.",
+  "Resources" : {
+    "Ec2Instance" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "ImageId" : "ami-775e4f16",
+        "InstanceType": "t2.micro",
+        "UserData"       : { "Fn::Base64" : { 
+          "Fn::Join" : [
+              "", 
+            [
+             "#!/bin/bash -xe\n",
+             "cd /tmp\n",
+             "yum -y install wget\n",
+             "/usr/bin/wget http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.68/bin/apache-tomcat-7.0.68.tar.gz\n",
+             "/bin/tar zxvf apache-tomcat-7.0.68.tar.gz\n",
+             "/bin/mv apache-tomcat-7.0.68 /usr/local/tomcat7\n",
+             "cd /usr/local/tomcat7/bin\n",
+             "yum -y install java\n",
+             "./startup.sh\n",
+             "cd /usr/local/tomcat7/webapps/\n",
+             "wget https://updates.jenkins-ci.org/download/war/2.15/jenkins.war\n",
+            "../bin/shutdown.sh\n",
+            "../bin/startup.sh\n"
+            ]]}}
+      }
+    }
+  }
+}
+
