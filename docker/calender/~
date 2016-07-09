@@ -1,0 +1,4 @@
+FOM tomcat
+MAINTAINER udevops
+ADD calender.war /usr/local/tomcat/webapps/
+
